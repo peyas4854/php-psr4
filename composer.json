@@ -1,4 +1,8 @@
 {
+     
+    "name": "php/oop",
+    "type": "project",
+    "description": "smaple project in php oop psr-4 statdard",
     "autoload":{
         "psr-4":{
            "app\\":"app/" 
