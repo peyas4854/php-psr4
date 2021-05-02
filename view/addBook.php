@@ -10,6 +10,7 @@ $booksobj = new BooksController();
 if (isset($_POST['submit'])) {
 
     $booksobj->create($_POST);
+    return header("location:../index.php");
 }
 
 include './layout/header.php';

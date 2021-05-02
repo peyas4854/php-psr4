@@ -4,6 +4,8 @@
 namespace app\model;
 
 use mysqli;
+use PDO;
+use PDOException;
 
 class Database
 {
@@ -13,19 +15,23 @@ class Database
     private $username = 'root';
     private $password = '12345';
     private $dbname = 'books-author';
-    public  $con;
+    public $con;
 
-    public function __construct()
+    public function getConnection()
     {
-        $this->con = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
-        if (mysqli_connect_error()) {
-            trigger_error("Failed to connect to MySQL: " . mysqli_connect_error());
-        } else {
-            return  $this->con;
+
+        $this->conn = null;
+
+        try {
+            $this->conn = new PDO("mysql:host=" . $this->servername . ";dbname=" . $this->dbname, $this->username, $this->password);
+            $this->conn->exec("set names utf8");
+
+        } catch (PDOException $exception) {
+            echo "Connection error: " . $exception->getMessage();
         }
-        
+
+        return $this->conn;
     }
-   
 
 
 }
