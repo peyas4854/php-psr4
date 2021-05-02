@@ -2,15 +2,11 @@
 
 
 namespace app\model;
-
-use mysqli;
 use PDO;
 use PDOException;
 
 class Database
 {
-
-
     private $servername = 'localhost';
     private $username = 'root';
     private $password = '12345';
@@ -19,7 +15,6 @@ class Database
 
     public function getConnection()
     {
-
         $this->conn = null;
 
         try {
@@ -32,6 +27,4 @@ class Database
 
         return $this->conn;
     }
-
-
 }
